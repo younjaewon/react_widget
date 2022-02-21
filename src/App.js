@@ -13,6 +13,8 @@ let posX = 0;
 let posY = 0;
 
 function App() {
+  const [dropDown, setDropDown] = useState(1);
+
   const [dragMenu, setDragMenu] = useState(null);
   const handleOnDragOver = (e) => {
     e.preventDefault();
@@ -31,14 +33,33 @@ function App() {
     setDragMenu(nodeCopy);
   };
 
+  const onMenu = () => {
+    if(dropDown === 1){
+      setDropDown(0);
+    }else if(dropDown === 0){
+      setDropDown(1);
+    }
+  }
+
   return (
     <div style={{ display: "flex" }}>
       <div style={{ width: "10%", border: "1px solid" }}>
-        {menuData.map((menu) => (
-          <div key={menu.id} draggable onDragStart={handleOnDragStart}>
-            {menu.name}
-          </div>
-        ))}
+        
+        <div className={dropDown === 1 ? "menu" : "menu-hidden"} onClick={onMenu}>
+          
+          <div className={dropDown === 0 ? "menutitle" : "menutitle-active"}>재고</div>
+
+          <ul>
+          {menuData.map((menu) => (
+            <li>
+              <div key={menu.id} draggable onDragStart={handleOnDragStart}>
+                {menu.name}
+              </div>
+            </li>
+          ))}
+          </ul>
+
+        </div>
       </div>
       <div
         onDragOver={handleOnDragOver}
