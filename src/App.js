@@ -61,12 +61,12 @@ function App() {
   };
 
   return (
-    <div style={{ display: "flex", position: "absolute" }}>
-      <div style={{ width: "10%", border: "1px solid" }}>
+    <div style={{}}>
+      <div style={{position: "relative", width: "10%",height: "600px", border: "1px solid", float:"left"}}>
 
         <div className={dropDown === 1 ? "menu" : "menu-hidden"} onClick={onMenu}>
           
-          <div className={dropDown === 0 ? "menutitle" : "menutitle-active"}>재고</div>
+        <div className={dropDown === 0 ? "menutitle" : "menutitle-active"}>재고</div>
 
         <ul>
         {menuData.map((menu) => (
@@ -83,18 +83,21 @@ function App() {
         </li>
         ))}
         </ul>
-        
-      </div>
-      <div
+
+        </div>
+        </div>
+        <div
         onDragOver={handleOnDragOver}
         onDrop={handleOnDrop}
         style={{
-          width: "100%",
+          width: "89.76%",
           height: "600px",
           border: "1px solid",
-          position: "absolute",
-        }}
-      ></div>
+          position: "relative",
+          float: "right"
+        }}>
+        
+      </div>
     </div>
   );
 }
