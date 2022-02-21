@@ -90,11 +90,11 @@ function App() {
         onDragOver={handleOnDragOver}
         onDrop={handleOnDrop}
         style={{
-          width: "89.76%",
+          width: "89.7%",
           height: "600px",
           border: "1px solid",
           position: "relative",
-          float: "right"
+          float: "left"
         }}>
         
       </div>
