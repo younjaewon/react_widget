@@ -17,7 +17,15 @@ let originalX = 0;
 let originalY = 0;
 
 function App() {
+  const [viewSide, setViewSide] = useState(1);
 
+  const onSide = () => {
+    if(viewSide === 1){
+      setViewSide(0);
+    }else if(viewSide === 0 ){
+      setViewSide(1);
+    }
+  }
   const [dragMenu, setDragMenu] = useState(null);
 
   const handleOnDragOver = (e) => {
@@ -54,9 +62,10 @@ function App() {
   };
 
   return (
-    <div style={{}}>
-      <div style={{position: "relative", width: "10%",height: "600px", border: "1px solid", float:"left"}}>
-
+    <div>
+      <div className={viewSide === 1 ? "viewSideButton" : "viewSideButton-active"} onClick={onSide} />
+      <div className={viewSide === 1 ? "sideMenu" : "hideMenu"}>
+        
           <SideMenu 
           title={"재고"} 
           data={
@@ -74,18 +83,11 @@ function App() {
             </li>
             ))} />
 
-        </div>
-        <div
+      </div>
+      <div
         onDragOver={handleOnDragOver}
         onDrop={handleOnDrop}
-        style={{
-          width: "89.7%",
-          height: "600px",
-          border: "1px solid",
-          position: "relative",
-          float: "left"
-        }}>
-        
+        className="main">
       </div>
     </div>
   );
