@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import SideMenu from "./components/sidemenu";
 
 const menuData = [
   { id: 1, name: "재고현황", type: "DATA" },
@@ -16,7 +17,6 @@ let originalX = 0;
 let originalY = 0;
 
 function App() {
-  const [dropDown, setDropDown] = useState(1);
 
   const [dragMenu, setDragMenu] = useState(null);
 
@@ -37,14 +37,7 @@ function App() {
     nodeCopy.style.position = "relative";
     setDragMenu(nodeCopy);
   };
-
-  const onMenu = () => {
-    if(dropDown === 1){
-      setDropDown(0);
-    }else if(dropDown === 0){
-      setDropDown(1);
-    }
-  }
+  
   const handleOnDrag = (e) => {
     e.target.style.left = `${e.target.offsetLeft + e.clientX - posX}px`;
     e.target.style.top = `${e.target.offsetTop + e.clientY - posY}px`;
@@ -64,27 +57,23 @@ function App() {
     <div style={{}}>
       <div style={{position: "relative", width: "10%",height: "600px", border: "1px solid", float:"left"}}>
 
-        <div className={dropDown === 1 ? "menu" : "menu-hidden"} onClick={onMenu}>
-          
-        <div className={dropDown === 0 ? "menutitle" : "menutitle-active"}>재고</div>
+          <SideMenu 
+          title={"재고"} 
+          data={
+            menuData.map((menu) => (
+            <li>
+              <div
+                key={menu.id}
+                draggable
+                onDragStart={handleOnDragStart}
+                onDrag={handleOnDrag}
+                onDragEnd={handleOnDragEnd}
+              >
+                {menu.name}
+              </div>
+            </li>
+            ))} />
 
-        <ul>
-        {menuData.map((menu) => (
-        <li>
-          <div
-            key={menu.id}
-            draggable
-            onDragStart={handleOnDragStart}
-            onDrag={handleOnDrag}
-            onDragEnd={handleOnDragEnd}
-          >
-            {menu.name}
-          </div>
-        </li>
-        ))}
-        </ul>
-
-        </div>
         </div>
         <div
         onDragOver={handleOnDragOver}

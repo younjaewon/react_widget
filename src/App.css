@@ -39,38 +39,38 @@
 
 
 /* 사이드 드랍다운 */
-.menutitle{
+.menuTitle{
   padding: 3px 5px 3px 5px;
   background-color: #dddddd;
   border-bottom:1px solid #5f5f5f ;
   border-top:1px solid #5f5f5f;
 }
-.menutitle::after{
+.menuTitle::after{
   position: absolute;
   right: 10px;
   font-weight: bolder;
   content: "∨";
 }
-.menutitle-active{
+.menuTitle-active{
   padding: 3px 5px 3px 5px;
   background-color: #dddddd;
   border-bottom:1px solid #5f5f5f ;
   border-top:1px solid #5f5f5f;
 }
-.menutitle-active::after{
+.menuTitle-active::after{
   position: absolute;
   right: 10px;
   font-weight: bolder;
   content: "∧";
 }
-.menu ul{
+.menu{
   padding-left: 30px;
   margin: 0;
 }
-.menu ul li{
+.menu li{
   list-style-type: "- ";
 }
-.menu-hidden ul{
-  max-height: 0;
-  overflow: hidden;
+.menu-hidden{
+  margin: 0;
+  display: none;
 }
